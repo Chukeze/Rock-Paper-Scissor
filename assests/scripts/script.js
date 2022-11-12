@@ -28,7 +28,7 @@ const getUserChoice = (options) => {
 
 function playRound(userChoice, computerChoice) {
     let roundResult = ' ';
-    let score = checkScore();
+    const score = checkScore();
     if((computerChoice == userChoice) && (score != 0)){
         return " Tie, Try Again";
     }else if(
