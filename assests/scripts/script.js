@@ -14,20 +14,107 @@
 
 
 const options = ['Rock', 'Paper', 'Scissors'];
+let computerScore = 3;
+let userScore = 3;
 
 const getComputerChoice = (options) => {
     //Return a Random choice out of the options
-    return console.log(options[Math.floor(Math.random() * options.length)]);
+    let j = options[Math.floor(Math.random() * options.length)];
+    console.log(j);
+    return options[Math.floor(Math.random() * options.length)];
 }
-const getUserChoice = () => {
-    const question = prompt("Select Rock, Paper, or Scissor");
-    console.log(question);
-    return question;
+const getUserChoice = (options) => {
+    options = prompt("Select Rock, Paper, or Scissors");
+    console.log(options);
+    return options;
 }
 
-function decision(computerChoice, userChoice) {
-    if(computerChoice === userChoice){
-        return "Tie, Try Again";
+function playRound(userChoice, computerChoice) {
+    let roundResult = ' ';
+    let score = checkScore();
+    if((computerChoice == userChoice) && (score != 0)){
+        return " Tie, Try Again";
+    }else if(
+        (
+            (userChoice == "Rock" && computerChoice == "Scissors") || 
+            (userChoice == "Paper" && computerChoice == "Rock") || 
+            (userChoice == "Scissors" && computerChoice == "Paper")
+        ) && (score != 0)
+    ){
+        roundResult = "You Won This Round, Computer Lose One Life, " + --computerScore + " ";
+        return roundResult;
+    }else if(
+        (
+            (userChoice == "Rock" && computerChoice == "Paper") || 
+            (userChoice == "Paper" && computerChoice == "Scissors") || 
+            (userChoice == "Scissors" && computerChoice == "Rock")
+        ) && (score != 0)
+    ){
+        roundResult = "Computer Won This Round, You Lose One Life, " + --userScore + " ";
+        return roundResult;
+    }else{
+        return " Why is this Not Working";
+    }
+}
+
+/*function jjj( round, score){
+    round.forEach(scores =>  {
+        scores == 0 ? score : "keep going"
+    });
+}*/
+
+function checkScore () {
+    if(userScore == 0){
+        return "You Lose";
+    }else if(computerScore == 0){
+        return "You Win";
+    }else{
+        return;
+    }
+}
+
+
+/*
+function decision(round) {
+    for(i = 0; i < 1; i++){
+        if(round){
+            /*if(userScore == 0){
+                return "You Lose";
+            }else if(computerScore == 0){
+            return "You Win";
+            }
+            return round;
+        }
+    }
+}
+*/
+const run = () => {
+    console.log(playRound(getUserChoice(options), getComputerChoice(options)));
+}
+
+run();
+
+
+
+//const start = document.createElement('button');
+    //start.textContent = "StartGame";
+    //document.body.appendChild(start);
+    //start.addEventListener('click', decision());
+    /*else if((computerChoice == "Rock" && userChoice == "Scissors")
+        || (computerChoice == "Paper" && userChoice == "Rock")
+        || (computerChoice == "Scissors" && userChoice == "Paper")){
+            return ++computerScore;
+    }
+
+    for(let i = 0; i < 3; i++){
+        if(round){
+            if(userScore == 0){
+                return "You Lose";
+            }else if(computerScore == 0 & round){
+                return "You Win";
+            }
+            return round;
+        }
     }
 
     /*if(computerChoice == userChoice){
@@ -41,19 +128,3 @@ function decision(computerChoice, userChoice) {
     }else{
         return "You Lose";
     }*/
-}
-
-const run = () => {
-    for(let i = 0; i < 5; i++){
-        console.log(decision(getComputerChoice(options),getUserChoice()));
-    }
-    
-    //const start = document.createElement('button');
-    //start.textContent = "StartGame";
-    //document.body.appendChild(start);
-    //start.addEventListener('click', decision());
-}
-
-run();
-
-
