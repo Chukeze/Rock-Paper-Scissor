@@ -1,9 +1,3 @@
-//Ui yes but later
-
-//Input:  User input and Ai inputs
-
-//Output : Decide Winner
-
 //Psuedocode 
 /**
  * For every user choice
