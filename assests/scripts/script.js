@@ -23,22 +23,23 @@ const getUserChoice = (options) => {
 function playRound(userChoice, computerChoice) {
     let roundResult = ' ';
     const score = checkScore();
-    if((computerChoice == userChoice) && (score != 0)){
+    // for each user choice ai make choice 
+    if((computerChoice[0].toLowerCase() == userChoice[0].toLowerCase()) && (score != 0)){
         return " Tie, Try Again";
     }else if(
         (
-            (userChoice == "Rock" && computerChoice == "Scissors") || 
-            (userChoice == "Paper" && computerChoice == "Rock") || 
-            (userChoice == "Scissors" && computerChoice == "Paper")
+            (userChoice[0].toLowerCase() == "Rock" && computerChoice[0].toLowerCase() == "Scissors") || 
+            (userChoice[0].toLowerCase() == "Paper" && computerChoice[0].toLowerCase() == "Rock") || 
+            (userChoice[0].toLowerCase() == "Scissors" && computerChoice[0].toLowerCase() == "Paper")
         ) && (score != 0)
     ){
         roundResult = "You Won This Round, Computer Lose One Life, " + --computerScore + " ";
         return roundResult;
     }else if(
         (
-            (userChoice == "Rock" && computerChoice == "Paper") || 
-            (userChoice == "Paper" && computerChoice == "Scissors") || 
-            (userChoice == "Scissors" && computerChoice == "Rock")
+            (userChoice[0].toLowerCase() == "Rock" && computerChoice[0].toLowerCase() == "Paper") || 
+            (userChoice[0].toLowerCase() == "Paper" && computerChoice[0].toLowerCase() == "Scissors") || 
+            (userChoice[0].toLowerCase() == "Scissors" && computerChoice[0].toLowerCase() == "Rock")
         ) && (score != 0)
     ){
         roundResult = "Computer Won This Round, You Lose One Life, " + --userScore + " ";
@@ -58,8 +59,17 @@ function checkScore () {
     }
 }
 
+function recordRoundResults () {
+    const roundCount = [];
+    for( const rounds of roundCount){
+        rounds.push(playRound(getUserChoice(options), getComputerChoice(options)));
+        console.log(rounds);
+    }
+    return roundCount;
+}
 const run = () => {
-    console.log(playRound(getUserChoice(options), getComputerChoice(options)));
+    //console.log(playRound(getUserChoice(options), getComputerChoice(options)));
+    console.log(recordRoundResults());    
 }
 
 run();
