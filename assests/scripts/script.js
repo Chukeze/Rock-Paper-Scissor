@@ -12,6 +12,7 @@ let userScore = 3;
 
 //UI
 function UI () {
+    const header = document.querySelector('h1')
     const body = document.querySelector('body');
     const container = document.createElement('main');
     const optionContainer = document.createElement('div');
@@ -23,8 +24,10 @@ function UI () {
     scoreBoxContainer.classList.add("scorebox-container");
 
     body.appendChild(container);
+    container.appendChild(header);
     container.appendChild(optionContainer);
     container.appendChild(scoreBoxContainer);
+    
     
 
     for (let i = 0; i < options.length; i++) {
@@ -41,11 +44,13 @@ function UI () {
         if(index == 1){
             const element = document.createElement('p');
             element.textContent = userScore;
+            element.id = 'user-score';
             scoreBoxContainer.appendChild(element);
         }
         if(index == 2){
             const element = document.createElement('p');
             element.textContent = computerScore;
+            element.id='computer-score';
             scoreBoxContainer.appendChild(element);
         }
     }
@@ -76,30 +81,23 @@ function UI () {
     }  */  
 
 let listenForUserEvent = document.querySelectorAll('option');
-
-
+/*
+listenForUserEvent.forEach((button) =>{
+    button.addEventListener('click', () =>{
+        const userChoice = button.value.toString();
+        playRound(userChoice,getComputerChoice(options));
+    })
+});*/
 
 const getComputerChoice = (options) => {
     //Return a Random choice out of the options
     return options[Math.floor(Math.random() * options.length)];
 }
 
-
-listenForUserEvent.forEach((button) =>{
-    button.addEventListener('click', () =>{
-        const img = button
-    })
-})
-
-const getUserChoice = (options) => {
-    options = listenForUserEvent.values;
-    console.log(options);
-    return options;
-}
-
 function playRound(userChoice, computerChoice) {
-    let roundResult = ' ';
     const score = checkScore();
+    const getUserCurrentScore = document.getElementById('user-score');
+    const getComputerCurrentScore = document.getElementById('computer-score');
     // for each user choice ai make choice 
     if((computerChoice[0].toLowerCase() == userChoice[0].toLowerCase()) && (score != 0)){
         return " Tie, Try Again";
@@ -110,8 +108,7 @@ function playRound(userChoice, computerChoice) {
             (userChoice[0].toLowerCase() == "Scissors" && computerChoice[0].toLowerCase() == "Paper")
         ) && (score != 0)
     ){
-        roundResult = "You Won This Round, Computer Lose One Life, " + --computerScore + " ";
-        return roundResult;
+        getUserCurrentScore.textContent = --computerScore;;
     }else if(
         (
             (userChoice[0].toLowerCase() == "Rock" && computerChoice[0].toLowerCase() == "Paper") || 
@@ -119,10 +116,9 @@ function playRound(userChoice, computerChoice) {
             (userChoice[0].toLowerCase() == "Scissors" && computerChoice[0].toLowerCase() == "Rock")
         ) && (score != 0)
     ){
-        roundResult = "Computer Won This Round, You Lose One Life, " + --userScore + " ";
-        return roundResult;
+        getComputerCurrentScore.textContent = --userScore;
     }else{
-        return " Why is this Not Working";
+        return;
     }
 }
 
@@ -135,19 +131,40 @@ function checkScore () {
         return;
     }
 }
-/*
-function recordRoundResults () {
+
+function updateScore(roundResult){
+    const getUserCurrentScore = document.getElementById('user-score');
+    const getComputerCurrentScore = document.getElementById('computer-score');
+    if(roundResult === ` "You Won This Round, Computer Lose One Life, " + ${--computerScore} + " "`){
+        getUserCurrentScore.textContent = computerScore;
+    }else if(roundResult === `"Computer Won This Round, You Lose One Life, " + ${--userScore} + " "`){
+        getComputerCurrentScore.textContent = userScore;
+    }else{
+        return;
+    }
+}
+//console.log(` "You Won This Round, Computer Lose One Life, " + ${--computerScore} + " "`)
+
+function recordRoundResults (round) {
     const roundCount = [];
     for( const rounds of roundCount){
-        rounds.push(playRound(getUserChoice(listenForUserEvent), getComputerChoice(options)));
-        console.log(rounds);
+        rounds.push(round);
     }
     return roundCount;
-}*/
+}
 const run = () => {
-    //console.log(playRound(getUserChoice(options), getComputerChoice(options)));
-    //console.log(recordRoundResults());   
+    recordRoundResults(updateScore
+            (listenForUserEvent.forEach((button) =>{
+                    button.addEventListener('click', () =>{
+                        const userChoice = button.value.toString();
+                        playRound(userChoice,getComputerChoice(options));
+                    })
+                })
+            )
+        );   
 }
 
-//run();
+for (let index = 0; index < 2; index++) {
+    run();
+}
 UI();

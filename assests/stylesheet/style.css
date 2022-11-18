@@ -33,6 +33,7 @@ html,body{
 .option-container__options{
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 100px;
 }
 .scorebox-container{
     display: flex;
@@ -42,4 +43,6 @@ html,body{
 }
 .scorebox-container > * {
     margin: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
 }
