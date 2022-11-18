@@ -52,18 +52,28 @@ function UI () {
     const option = document.querySelectorAll('option');
     const optionArray = Array.from(option);
     const imageOption = ['./assests/images/rock.png', './assests/images/paper.png', './assests/images/scissors.png'];
-    optionArray.forEach((button) => {
-        const image = document.createElement('img');
-        button.appendChild(image);
-    });
     for (let index = 0; index < imageOption.length; index++) {
-        const getImages = document.querySelectorAll('img');
-        getImages.forEach(img => {
-            img.src = imageOption[index++];
-            img.alt = options;
-        });        
-    }    
+        optionArray.forEach((button) => {
+        
+            button.style.backgroundImage = `url('${imageOption[index++]}')`;
+            /*const getImages = document.querySelectorAll('img');
+            getImages.forEach(img => {
+                img.src = imageOption[index++];
+                img.alt = options;
+            });   */     
+        
+        //const image = document.createElement('img');
+        //button.appendChild(image);
+        });
+    } 
 }
+    /*for (let index = 0; index < imageOption.length; index++) {
+    const getImages = document.querySelectorAll('img');
+    getImages.forEach(img => {
+        img.src = imageOption[index++];
+        img.alt = options;
+    });        
+    }  */  
 
 let listenForUserEvent = document.querySelectorAll('option');
 
