@@ -1,0 +1,41 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.canvas{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: rosybrown;
+    margin: 0;
+    padding: 0;
+    border: solid 2px rgba(130,10,20,.89);
+    height: 100%;
+}
+
+.option-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: max-content;
+    width: min(35px, 75%);
+}
+
+.option-container__options--flowSpacer {
+    padding: 5rem;
+    border: solid .01rem ;
+    text-align: center;
+}
+.scorebox-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.scorebox-container > * {
+    margin: 1rem;
+}

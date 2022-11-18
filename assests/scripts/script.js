@@ -5,11 +5,51 @@
  * compare user choice to ai chose
  * which ever has higher precedence wins
  */
-
-
 const options = ['Rock', 'Paper', 'Scissors'];
 let computerScore = 3;
 let userScore = 3;
+
+
+//UI
+function UI () {
+    const body = document.querySelector('body');
+    const container = document.createElement('main');
+    const optionContainer = document.createElement('div');
+    const scoreBoxContainer = document.createElement('div');
+    
+
+    container.classList.add("canvas")
+    optionContainer.classList.add("option-container");
+    scoreBoxContainer.classList.add("scorebox-container");
+
+    body.appendChild(container);
+    container.appendChild(optionContainer);
+    container.appendChild(scoreBoxContainer);
+    
+
+    for (let i = 0; i < options.length; i++) {
+        const element = document.createElement('option');
+        element.value = options[i];
+        element.textContent = options[i];
+        optionContainer.appendChild(element);
+        element.classList.add("option-container__options");
+        element.classList.add("option-container__options--flowSpacer");
+        element.id= options[i];
+    }
+
+    for (let index = 1; index < 3; index++) {
+        if(index == 1){
+            const element = document.createElement('p');
+            element.textContent = userScore;
+            scoreBoxContainer.appendChild(element);
+        }
+        if(index == 2){
+            const element = document.createElement('p');
+            element.textContent = computerScore;
+            scoreBoxContainer.appendChild(element);
+        }
+    }
+}
 
 const getComputerChoice = (options) => {
     //Return a Random choice out of the options
@@ -69,7 +109,8 @@ function recordRoundResults () {
 }
 const run = () => {
     //console.log(playRound(getUserChoice(options), getComputerChoice(options)));
-    console.log(recordRoundResults());    
+    console.log(recordRoundResults());   
 }
 
 run();
+UI();
