@@ -30,10 +30,10 @@ function UI () {
     for (let i = 0; i < options.length; i++) {
         const element = document.createElement('option');
         element.value = options[i];
-        element.textContent = options[i];
+        //element.textContent = options[i];
         optionContainer.appendChild(element);
         element.classList.add("option-container__options");
-        element.classList.add("option-container__options--flowSpacer");
+        element.classList.add("option-container__options--size");
         element.id= options[i];
     }
 
@@ -49,14 +49,41 @@ function UI () {
             scoreBoxContainer.appendChild(element);
         }
     }
+    const option = document.querySelectorAll('option');
+    const optionArray = Array.from(option);
+    const imageOption = ['./assests/images/rock.png', './assests/images/paper.png', './assests/images/scissors.png'];
+    optionArray.forEach((button) => {
+        const image = document.createElement('img');
+        button.appendChild(image);
+    });
+    for (let index = 0; index < imageOption.length; index++) {
+        const getImages = document.querySelectorAll('img');
+        getImages.forEach(img => {
+            img.src = imageOption[index++];
+            img.alt = options;
+        });        
+    }    
 }
+
+let listenForUserEvent = document.querySelectorAll('option');
+
+
 
 const getComputerChoice = (options) => {
     //Return a Random choice out of the options
     return options[Math.floor(Math.random() * options.length)];
 }
+
+
+listenForUserEvent.forEach((button) =>{
+    button.addEventListener('click', () =>{
+        const img = button
+    })
+})
+
 const getUserChoice = (options) => {
-    options = prompt("Select Rock, Paper, or Scissors");
+    options = listenForUserEvent.values;
+    console.log(options);
     return options;
 }
 
@@ -98,19 +125,19 @@ function checkScore () {
         return;
     }
 }
-
+/*
 function recordRoundResults () {
     const roundCount = [];
     for( const rounds of roundCount){
-        rounds.push(playRound(getUserChoice(options), getComputerChoice(options)));
+        rounds.push(playRound(getUserChoice(listenForUserEvent), getComputerChoice(options)));
         console.log(rounds);
     }
     return roundCount;
-}
+}*/
 const run = () => {
     //console.log(playRound(getUserChoice(options), getComputerChoice(options)));
-    console.log(recordRoundResults());   
+    //console.log(recordRoundResults());   
 }
 
-run();
+//run();
 UI();
