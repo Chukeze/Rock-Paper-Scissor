@@ -44,14 +44,12 @@ function UI () {
     computerScoreContainer.appendChild(computerScoreIdentifierContainer);
     computerScoreIdentifierContainer.appendChild(computerScoreIdentifier);
 
-
     userScoreIdentifier.textContent = 'User';
     computerScoreIdentifier.textContent = 'Cpu';
 
     for (let i = 0; i < options.length; i++) {
         const element = document.createElement('button');
         element.value = options[i];
-        //element.textContent = options[i];
         optionContainer.appendChild(element);
         element.classList.add("option-container__options");
         element.classList.add("option-container__options--size");
@@ -77,16 +75,7 @@ function UI () {
     const imageOption = ['./assests/images/rock.png', './assests/images/paper.png', './assests/images/scissors.png'];
     for (let index = 0; index < imageOption.length; index++) {
         optionArray.forEach((button) => {
-        
             button.style.backgroundImage = `url('${imageOption[index++]}')`;
-            /*const getImages = document.querySelectorAll('img');
-            getImages.forEach(img => {
-                img.src = imageOption[index++];
-                img.alt = options;
-            });   */     
-        
-        //const image = document.createElement('img');
-        //button.appendChild(image);
         });
     } 
 
@@ -99,21 +88,18 @@ const getComputerChoice = (options) => {
     //Return a Random choice out of the options
     return options[Math.floor(Math.random() * options.length)];
 }
+
 const buttons  = document.querySelectorAll('button');
 buttons.forEach((button) =>{
     button.addEventListener("click", () =>{
-        //console.log(typeof(button.value));
         userChoice = button.value;
         playRound(userChoice, getComputerChoice(options));
     });
 });
 
-
-
 function playRound(userChoice,computerChoice) {
     const score = checkScore();
     const getUserCurrentScore = document.getElementById('user-score');
-
     const getComputerCurrentScore = document.getElementById('computer-score');
     // for each user choice ai make choice 
     if((computerChoice == userChoice) && (score != 0)){
@@ -125,11 +111,15 @@ function playRound(userChoice,computerChoice) {
             (userChoice == "Scissors" && computerChoice == "Paper")
         ) && (score != 0)
     ){
-        console.log(computerChoice);
         console.log(userChoice);
-        computerScore = --computerScore;
-        getUserCurrentScore.textContent = computerScore;
+        console.log(computerChoice);
+        --computerScore ;
+        //userScore = userScore - 0;
+        console.log("userScore is " + userScore + " 1st elseif ran");
+        console.log("cpu score is " + computerScore + " 1st elseif ran");
         checkScore(userScore,computerScore);
+        getComputerCurrentScore.textContent = computerScore;
+        
     }else if(
         (
             (userChoice == "Rock" && computerChoice == "Paper") || 
@@ -137,20 +127,25 @@ function playRound(userChoice,computerChoice) {
             (userChoice == "Scissors" && computerChoice == "Rock")
         ) && (score != 0)
     ){
-        console.log(computerChoice);
         console.log(userChoice);
-        userScore = --userScore;
-        getComputerCurrentScore.textContent = userScore;
+        console.log(computerChoice);
+        userScore = userScore - 1;
+        //computerScore = computerScore - 0;
+
+        console.log("userScore is " + userScore + " 2nd elseif ran");
+        console.log("cpu score is " + computerScore + " 2nd elseif ran");
         checkScore(userScore,computerScore);
+        getUserCurrentScore.textContent = userScore;
+        
     }else{
         return;
     }
 }
 
 function checkScore (userScore,computerScore) {
-    if(userScore == 0){
+    if(userScore == 0 && computerScore > 0){
         declareWinner("You Lose! Get back in the Gym and train some more", userScore);
-    }else if(computerScore == 0){
+    }else if(computerScore == 0 && userScore > 0){
         declareWinner("You Won! Keep going chase the world Championship", computerScore);
     }else{
         return;
@@ -161,7 +156,6 @@ function declareWinner(str='',score) {
     let showWinner = document.querySelector('.winner-declaration');
     if(score == 0){
         showWinner.textContent = str;
-        
     }
 }
 
