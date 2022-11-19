@@ -46,3 +46,20 @@ html,body{
     font-size: 1.5rem;
     text-align: center;
 }
+.modal {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 16px;
+    height: 200px;
+    width: 200px;
+    z-index: 1000;
+    background-color: gainsboro;
+    background-size: 100px, 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}

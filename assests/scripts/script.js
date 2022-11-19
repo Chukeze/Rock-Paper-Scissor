@@ -31,7 +31,7 @@ function UI () {
     container.classList.add("canvas")
     optionContainer.classList.add("option-container");
     scoreBoxContainer.classList.add("scorebox-container");
-    declareWinner.classList.add("winner-declaration");
+    declareWinner.classList.add("declaration");
 
     body.appendChild(container);
     container.appendChild(header);
@@ -101,9 +101,14 @@ function playRound(userChoice,computerChoice) {
     const score = checkScore();
     const getUserCurrentScore = document.getElementById('user-score');
     const getComputerCurrentScore = document.getElementById('computer-score');
+    let showChoices = document.querySelector('.declaration');
     // for each user choice ai make choice 
     if((computerChoice == userChoice) && (score != 0)){
-        return " Tie, Try Again";
+        setTimeout(()=>{
+            console.log("userScore is " + userScore + ". cpu score is " + computerScore + " tie " + userChoice + "   " + computerChoice );
+        },10000);
+        showRoundResult(userChoice,computerChoice);
+        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
     }else if(
         (
             (userChoice == "Rock" && computerChoice == "Scissors") || 
@@ -113,13 +118,17 @@ function playRound(userChoice,computerChoice) {
     ){
         console.log(userChoice);
         console.log(computerChoice);
-        --computerScore ;
-        //userScore = userScore - 0;
-        console.log("userScore is " + userScore + " 1st elseif ran");
-        console.log("cpu score is " + computerScore + " 1st elseif ran");
-        checkScore(userScore,computerScore);
-        getComputerCurrentScore.textContent = computerScore;
-        
+        setTimeout(()=>{
+            --computerScore ;
+            //userScore = userScore - 0;
+            console.log("userScore is " + userScore + " 1st elseif ran");
+            console.log("cpu score is " + computerScore + " 1st elseif ran");
+            checkScore(userScore,computerScore);
+            getComputerCurrentScore.textContent = computerScore;
+        },10000);
+        showRoundResult(userChoice,computerChoice);
+        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        //clearTimeout(timeoutID);
     }else if(
         (
             (userChoice == "Rock" && computerChoice == "Paper") || 
@@ -129,14 +138,45 @@ function playRound(userChoice,computerChoice) {
     ){
         console.log(userChoice);
         console.log(computerChoice);
-        userScore = userScore - 1;
-        //computerScore = computerScore - 0;
-
-        console.log("userScore is " + userScore + " 2nd elseif ran");
-        console.log("cpu score is " + computerScore + " 2nd elseif ran");
-        checkScore(userScore,computerScore);
-        getUserCurrentScore.textContent = userScore;
+        setTimeout(() =>{
+            userScore = userScore - 1;
+            console.log("userScore is " + userScore + " 2nd elseif ran");
+            console.log("cpu score is " + computerScore + " 2nd elseif ran");
+            checkScore(userScore,computerScore);
+            getUserCurrentScore.textContent = userScore;
+        }, 6000);        
+        showRoundResult(userChoice, computerChoice);
+        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        //computerScore = computerScore - 0;        
+    }else if(
+        (
+            (userChoice == "Gun" && computerChoice == "Paper") ||
+            (userChoice == "Gun" && computerChoice == "Scissors") || 
+            (userChoice == "Gun" && computerChoice == "Rock")
+        ) && (score != 0)
+    ){
         
+        setTimeout(()=>{
+            --computerScore;
+            checkScore(userScore, computerScore);
+            getComputerCurrentScore.textContent = computerScore;
+        }, 6000);
+        showRoundResult(userChoice, computerChoice);
+        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+    }else if(
+        (
+            (userChoice == "Rock" && computerChoice == "Gun") ||
+            (userChoice == "Paper" && computerChoice == "Gun") || 
+            (userChoice == "Scissor" && computerChoice == "Gun")
+        ) && (score != 0)
+    ){
+        setTimeout(() =>{
+            --userScore;
+            checkScore(userScore,computerScore);
+            getUserCurrentScore.textContent = userScore;
+        }, 6000);
+        showRoundResult(userChoice, computerChoice);
+        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
     }else{
         return;
     }
@@ -146,6 +186,7 @@ function checkScore (userScore,computerScore) {
     if(userScore == 0 && computerScore > 0){
         declareWinner("You Lose! Get back in the Gym and train some more", userScore);
     }else if(computerScore == 0 && userScore > 0){
+        setTimeout(nextLevel, 3000); 
         declareWinner("You Won! Keep going chase the world Championship", computerScore);
     }else{
         return;
@@ -153,7 +194,7 @@ function checkScore (userScore,computerScore) {
 }
 
 function declareWinner(str='',score) {
-    let showWinner = document.querySelector('.winner-declaration');
+    let showWinner = document.querySelector('.declaration');
     if(score == 0){
         showWinner.textContent = str;
     }
@@ -161,91 +202,332 @@ function declareWinner(str='',score) {
 
 function showRoundResult(userChoice, computerChoice){
     const modal = document.createElement('div');
+    modal.classList.add('modal');
     let showChoiceMadeByUser;
     let showChoiceMadeByCpu;
+    const container = document.querySelector('.canvas');
+    container.appendChild(modal);
     if(userChoice == "Rock" && computerChoice == "Scissors"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url()`;
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
     if(userChoice == "Paper" && computerChoice == "Rock"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand")`;
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
     if(userChoice == "Scissors" && computerChoice == "Paper"){
-        modal.style.backgroundImage = `url("./assests/images/scissors-beating-paper.png")`
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        modal.style.backgroundImage = `url("./assests/images/scissors-beating-paper.png")`;
+        
     }
     if(userChoice == "Rock" && computerChoice == "Paper"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
         showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-reversed.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
     if(userChoice == "Paper" && computerChoice == "Scissors"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
         showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
     if(userChoice == "Scissors" && computerChoice == "Rock"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png)`;
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
     if(userChoice == "Rock" && computerChoice == "Rock"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         modal.style.backgroundImage = `url("./assests/images/rock-rock.png")`;
     }
     if(userChoice == "Paper" && computerChoice == "Paper"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         modal.style.backgroundImage = `url("./assests/images/paper-paper.png")`;
     }
     if(userChoice == "Scissors" && computerChoice == "Scissors"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png)`;
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
-    if(userChoice == "Gun" && computerChoice == "Gun"){
+    if(userChoice == "Gun" && computerChoice == "Rock"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png)`;
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+    }
+    if(userChoice == "Gun" && computerChoice == "Paper"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
         showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+    }
+    if(userChoice == "Gun" && computerChoice == "Scissor"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+    }
+    if(userChoice == "Rock" && computerChoice == "Gun"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+    }
+    if(userChoice == "Paper" && computerChoice == "Gun"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+    }
+    if(userChoice == "Scissors" && computerChoice == "Gun"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
+        modal.appendChild(showChoiceMadeByUser);
+        modal.appendChild(showChoiceMadeByCpu);
+        
+    }
+    if(userChoice == "Gun" && computerChoice == "Gun"){
+        setTimeout(()=>{
+            container.removeChild(modal);
+        },5500);
+        showChoiceMadeByUser = document.createElement('div');
+        showChoiceMadeByCpu = document.createElement('div');
+        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+        showChoiceMadeByUser.style.backgroundPosition ="center center";
+        showChoiceMadeByCpu.style.backgroundPosition ="center";
+        showChoiceMadeByUser.style.height = "100%";
+        showChoiceMadeByUser.style.width = "50%";
+        showChoiceMadeByCpu.style.height = "100%";
+        showChoiceMadeByCpu.style.width = "50%";
         modal.appendChild(showChoiceMadeByUser);
         modal.appendChild(showChoiceMadeByCpu);
     }
 }
 
+/*
 function storeGameResult(result) {
     let gameresult = [];
     return gameresult.push(result);
 }
+*/
+function nextLevel() {
+    const nextLevelButton = document.createElement('button');
+    nextLevelButton.textContent = "Final Level";
+    nextLevelButton.addEventListener('click', () => {
+        activateGun();
+    })
+}
+
+
 
 function createGun(){
     const gunButton = document.createElement('button');
     const findOptions = document.querySelector('.option-container');
+    options.push('Gun');
     gunButton.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
     findOptions.appendChild(gunButton);
 }
 
-function activateGun(gameresult){
-    if(gameresult == "You Won! Keep going chase the world Championship" ){
-        createGun();
-    }
+function activateGun(){
+    createGun
 }
 
 /*const listenForUserEvent = document.querySelectorAll('button');
