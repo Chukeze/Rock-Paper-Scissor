@@ -431,6 +431,11 @@ function showRoundResult(userChoice, computerChoice){
             setTimeout(()=>{
                 container.removeChild(modal);
             },5500);
+            /** When I Revisit For Clean Code  usse this  
+            showChoiceMadeByUser.setAttribute(
+                'style','background-image:'
+            );
+            showChoiceMadeByCpu.setAttribute()*/
             showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand")`;
             showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
             showChoiceMadeByUser.style.backgroundSize ="100px 80px";
