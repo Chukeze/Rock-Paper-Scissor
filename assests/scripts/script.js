@@ -212,298 +212,278 @@ function showRoundResult(userChoice, computerChoice){
     let showChoiceMadeByCpu;
     const container = document.querySelector('.canvas');
     container.appendChild(modal);
-    if(userChoice == "Rock" && computerChoice == "Scissors"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
+    if(true){
         showChoiceMadeByUser = document.createElement('div');
         showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Paper" && computerChoice == "Rock"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Scissors" && computerChoice == "Paper"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        modal.style.backgroundImage = `url("./assests/images/scissors-beating-paper.png")`;
-        
-    }
-    if(userChoice == "Rock" && computerChoice == "Paper"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-reversed.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Paper" && computerChoice == "Scissors"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Scissors" && computerChoice == "Rock"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Rock" && computerChoice == "Rock"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        modal.style.backgroundImage = `url("./assests/images/rock-rock.png")`;
-    }
-    if(userChoice == "Paper" && computerChoice == "Paper"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        modal.style.backgroundImage = `url("./assests/images/paper-paper.png")`;
-    }
-    if(userChoice == "Scissors" && computerChoice == "Scissors"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Gun" && computerChoice == "Rock"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Gun" && computerChoice == "Paper"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Gun" && computerChoice == "Scissor"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Rock" && computerChoice == "Gun"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Paper" && computerChoice == "Gun"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-    }
-    if(userChoice == "Scissors" && computerChoice == "Gun"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
-        
-    }
-    if(userChoice == "Gun" && computerChoice == "Gun"){
-        setTimeout(()=>{
-            container.removeChild(modal);
-        },5500);
-        showChoiceMadeByUser = document.createElement('div');
-        showChoiceMadeByCpu = document.createElement('div');
-        showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
-        showChoiceMadeByUser.style.backgroundSize ="100px 80px";
-        showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
-        showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
-        showChoiceMadeByUser.style.backgroundPosition ="center center";
-        showChoiceMadeByCpu.style.backgroundPosition ="center";
-        showChoiceMadeByUser.style.height = "100%";
-        showChoiceMadeByUser.style.width = "50%";
-        showChoiceMadeByCpu.style.height = "100%";
-        showChoiceMadeByCpu.style.width = "50%";
-        modal.appendChild(showChoiceMadeByUser);
-        modal.appendChild(showChoiceMadeByCpu);
+        showChoiceMadeByUser.classList.add("show-user-choice");
+        showChoiceMadeByCpu.classList.add("show-user-choice");
+        if(userChoice == "Rock" && computerChoice == "Scissors"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Paper" && computerChoice == "Rock"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Scissors" && computerChoice == "Paper"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            modal.style.backgroundImage = `url("./assests/images/scissors-beating-paper.png")`;
+            
+        }
+        if(userChoice == "Rock" && computerChoice == "Paper"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-reversed.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Paper" && computerChoice == "Scissors"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Scissors" && computerChoice == "Rock"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Rock" && computerChoice == "Rock"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            modal.style.backgroundImage = `url("./assests/images/rock-rock.png")`;
+        }
+        if(userChoice == "Paper" && computerChoice == "Paper"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            modal.style.backgroundImage = `url("./assests/images/paper-paper.png")`;
+        }
+        if(userChoice == "Scissors" && computerChoice == "Scissors"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Gun" && computerChoice == "Rock"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/rock-reversed.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Gun" && computerChoice == "Paper"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Gun" && computerChoice == "Scissor"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/hand-scissors.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Rock" && computerChoice == "Gun"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/rock-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Paper" && computerChoice == "Gun"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/paper-hand")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
+        if(userChoice == "Scissors" && computerChoice == "Gun"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/hand-scissors-reversed.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+            
+        }
+        if(userChoice == "Gun" && computerChoice == "Gun"){
+            setTimeout(()=>{
+                container.removeChild(modal);
+            },5500);
+            showChoiceMadeByUser.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByCpu.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+            showChoiceMadeByUser.style.backgroundSize ="100px 80px";
+            showChoiceMadeByCpu.style.backgroundSize ="100px 80px";
+            showChoiceMadeByUser.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByCpu.style.backgroundRepeat ="no-repeat";
+            showChoiceMadeByUser.style.backgroundPosition ="center center";
+            showChoiceMadeByCpu.style.backgroundPosition ="center";
+            showChoiceMadeByUser.style.height = "100%";
+            showChoiceMadeByUser.style.width = "50%";
+            showChoiceMadeByCpu.style.height = "100%";
+            showChoiceMadeByCpu.style.width = "50%";
+            modal.appendChild(showChoiceMadeByUser);
+            modal.appendChild(showChoiceMadeByCpu);
+        }
     }
 }
 
