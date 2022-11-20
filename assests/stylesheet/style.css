@@ -47,15 +47,16 @@ html,body{
     text-align: center;
 }
 .modal {
+    --width: 800px;
     position: absolute;
-    top: 25%;
-    left: 25%;
+    top: 35%;
+    left: calc(45% / var(--width));
     display: flex;
     flex-direction: row;
     gap: 16px;
     padding: 16px;
     height: 200px;
-    width: 200px;
+    width: var(--width);
     z-index: 1000;
     background-color: gainsboro;
     background-size: 100px, 80px;

@@ -108,7 +108,12 @@ function playRound(userChoice,computerChoice) {
             console.log("userScore is " + userScore + ". cpu score is " + computerScore + " tie " + userChoice + "   " + computerChoice );
         },10000);
         showRoundResult(userChoice,computerChoice);
-        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. It is a tie you both chose ${userChoice}! `;
+        if(computerChoice == "Gun" && userChoice == "Gun"){
+            userScore = 0;
+            computerScore = 0;
+            showChoices.textContent = `No One Wins When We Both Play With Guns. You Both Killed Each Other`;
+        }
     }else if(
         (
             (userChoice == "Rock" && computerChoice == "Scissors") || 
@@ -127,7 +132,7 @@ function playRound(userChoice,computerChoice) {
             getComputerCurrentScore.textContent = computerScore;
         },10000);
         showRoundResult(userChoice,computerChoice);
-        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
         //clearTimeout(timeoutID);
     }else if(
         (
@@ -146,7 +151,7 @@ function playRound(userChoice,computerChoice) {
             getUserCurrentScore.textContent = userScore;
         }, 6000);        
         showRoundResult(userChoice, computerChoice);
-        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. ${computerChoice} beats ${userChoice}! `;
         //computerScore = computerScore - 0;        
     }else if(
         (
@@ -157,12 +162,12 @@ function playRound(userChoice,computerChoice) {
     ){
         
         setTimeout(()=>{
-            --computerScore;
+            computerScore = 0;
             checkScore(userScore, computerScore);
             getComputerCurrentScore.textContent = computerScore;
         }, 6000);
         showRoundResult(userChoice, computerChoice);
-        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
     }else if(
         (
             (userChoice == "Rock" && computerChoice == "Gun") ||
@@ -171,12 +176,12 @@ function playRound(userChoice,computerChoice) {
         ) && (score != 0)
     ){
         setTimeout(() =>{
-            --userScore;
+            userScore = 0;
             checkScore(userScore,computerScore);
             getUserCurrentScore.textContent = userScore;
         }, 6000);
         showRoundResult(userChoice, computerChoice);
-        showChoices.textContent = `You Chose ${userChoice} The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
+        showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. ${computerChoice} beats ${userChoice}! `;
     }else{
         return;
     }
