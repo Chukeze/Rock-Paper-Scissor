@@ -106,7 +106,7 @@ function playRound(userChoice,computerChoice) {
     if((computerChoice == userChoice) && (score != 0)){
         setTimeout(()=>{
             console.log("userScore is " + userScore + ". cpu score is " + computerScore + " tie " + userChoice + "   " + computerChoice );
-        },10000);
+        },6000);
         showRoundResult(userChoice,computerChoice);
         showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. It is a tie you both chose ${userChoice}! `;
         if(computerChoice == "Gun" && userChoice == "Gun"){
@@ -130,7 +130,7 @@ function playRound(userChoice,computerChoice) {
             console.log("cpu score is " + computerScore + " 1st elseif ran");
             checkScore(userScore,computerScore);
             getComputerCurrentScore.textContent = computerScore;
-        },10000);
+        },6000);
         showRoundResult(userChoice,computerChoice);
         showChoices.textContent = `You Chose ${userChoice}. The Cpu Chose ${computerChoice}. ${userChoice} beats ${computerChoice}! `;
         //clearTimeout(timeoutID);
@@ -189,6 +189,7 @@ function playRound(userChoice,computerChoice) {
 
 function checkScore (userScore,computerScore) {
     if(userScore == 0 && computerScore > 0){
+        setTimeout(resetGame, 3000);
         declareWinner("You Lose! Get back in the Gym and train some more", userScore);
     }else if(computerScore == 0 && userScore > 0){
         setTimeout(nextLevel, 3000); 
@@ -496,11 +497,18 @@ function storeGameResult(result) {
 function nextLevel() {
     const nextLevelButton = document.createElement('button');
     nextLevelButton.textContent = "Final Level";
+    let attachToBody = document.querySelector('.canvas');
+    attachToBody.appendChild(nextLevelButton);
     nextLevelButton.addEventListener('click', () => {
+        resetGame();
         activateGun();
-    })
+    });
 }
 
+function resetGame() {
+    userScore = 3;
+    computerScore = 3;
+}
 
 
 function createGun(){
@@ -512,7 +520,7 @@ function createGun(){
 }
 
 function activateGun(){
-    createGun
+    createGun();
 }
 
 /*const listenForUserEvent = document.querySelectorAll('button');
