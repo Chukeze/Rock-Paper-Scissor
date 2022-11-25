@@ -189,7 +189,7 @@ function playRound(userChoice,computerChoice) {
 
 function checkScore (userScore,computerScore) {
     if(userScore == 0 && computerScore > 0){
-        setTimeout(resetGame(), 2000);
+        setTimeout(resetGame(userScore, computerScore), 2000);
         declareWinner("You Lose! Get back in the Gym and train some more", userScore);
     }else if(computerScore == 0 && userScore > 0){
         setTimeout(nextLevel(), 3000); 
@@ -505,22 +505,33 @@ function nextLevel() {
     let attachToBody = document.querySelector('.canvas');
     attachToBody.appendChild(nextLevelButton);
     nextLevelButton.addEventListener('click', () => {
-        resetGame();
+        resetGame(userScore, computerScore);
         activateGun();
+        nextLevelButton.remove();
     });
 }
 
-function resetGame() {
+function resetGame(userScore,computerScore) {
+    const getUserCurrentScore = document.getElementById('user-score');
+    const getComputerCurrentScore = document.getElementById('computer-score');
+    setTimeout(()=>{
+        buttons.forEach( button => {
+            button.disabled = false;
+        });
+    }, 200)
     buttons.forEach( button => {
         button.disabled;
     });
-    if((computerScore || userScore) < 3){
-        userScore = 3;
-        computerScore = 3;
+    if((computerScore < 3) || (userScore < 3)){
+        getUserCurrentScore.textContent = userScore = 3;
+        getComputerCurrentScore.textContent = computerScore = 3;
+
+    }else if ((computerScore == 3) || (userScore == 3)){
+        getUserCurrentScore.textContent = userScore = 3;
+        getComputerCurrentScore.textContent = computerScore = 3;
+    }else{
+        console.log("skip all other options");
     }
-    buttons.forEach( button => {
-        button.disabled = false;
-    })
 }
 
 
