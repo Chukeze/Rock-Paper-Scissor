@@ -512,6 +512,7 @@ function nextLevel() {
 }
 
 function resetGame(userScore,computerScore) {
+    const getDecalaration = document.querySelector('.declaration');
     const getUserCurrentScore = document.getElementById('user-score');
     const getComputerCurrentScore = document.getElementById('computer-score');
     setTimeout(()=>{
@@ -525,7 +526,7 @@ function resetGame(userScore,computerScore) {
     if((computerScore < 3) || (userScore < 3)){
         getUserCurrentScore.textContent = userScore = 3;
         getComputerCurrentScore.textContent = computerScore = 3;
-
+        getDecalaration.textContent = ''
     }else if ((computerScore == 3) || (userScore == 3)){
         getUserCurrentScore.textContent = userScore = 3;
         getComputerCurrentScore.textContent = computerScore = 3;
