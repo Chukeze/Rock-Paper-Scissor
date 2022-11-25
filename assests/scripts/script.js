@@ -514,7 +514,6 @@ function resetGame() {
     buttons.forEach( button => {
         button.disabled;
     });
-    document.querySelector('.option-container').remove();
     if((computerScore || userScore) < 3){
         userScore = 3;
         computerScore = 3;
