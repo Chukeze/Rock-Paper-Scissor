@@ -189,10 +189,10 @@ function playRound(userChoice,computerChoice) {
 
 function checkScore (userScore,computerScore) {
     if(userScore == 0 && computerScore > 0){
-        setTimeout(resetGame, 3000);
+        setTimeout(resetGame(), 2000);
         declareWinner("You Lose! Get back in the Gym and train some more", userScore);
     }else if(computerScore == 0 && userScore > 0){
-        setTimeout(nextLevel, 3000); 
+        setTimeout(nextLevel(), 3000); 
         declareWinner("You Won! Keep going chase the world Championship", computerScore);
     }else{
         return;
@@ -431,7 +431,7 @@ function showRoundResult(userChoice, computerChoice){
             setTimeout(()=>{
                 container.removeChild(modal);
             },5500);
-            /** When I Revisit For Clean Code  usse this  
+            /** When I Revisit For Clean Code  use this  
             showChoiceMadeByUser.setAttribute(
                 'style','background-image:'
             );
@@ -511,8 +511,17 @@ function nextLevel() {
 }
 
 function resetGame() {
-    userScore = 3;
-    computerScore = 3;
+    buttons.forEach( button => {
+        button.disabled;
+    });
+    document.querySelector('.option-container').remove();
+    if((computerScore || userScore) < 3){
+        userScore = 3;
+        computerScore = 3;
+    }
+    buttons.forEach( button => {
+        button.disabled = false;
+    })
 }
 
 
@@ -521,6 +530,9 @@ function createGun(){
     const findOptions = document.querySelector('.option-container');
     options.push('Gun');
     gunButton.style.backgroundImage = `url("./assests/images/gun-hand.png")`;
+    gunButton.classList.add('option-container__options');
+    gunButton.classList.add('option-container__options--size');
+    gunButton.value = 'Gun';
     findOptions.appendChild(gunButton);
 }
 
